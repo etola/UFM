@@ -21,6 +21,7 @@ install_requires = [
     "huggingface_hub",
     "einops",
     "gradio",
+    "h5py"
     # UniCeption dependencies
     "timm",
     "jaxtyping",

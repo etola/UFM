@@ -18,148 +18,91 @@
     <em>UFM unifies the tasks of Optical Flow Estimation and Wide Baseline Matching and provides accurate dense correspondences for in-the-wild images at significantly fast inference speeds.</em>
 </p>
 
+## Welcome to the Benchmark Branch
+If you reach here, you are interested in verifying the claims made in the UFM paper, thank you for the interest and for contributing to reproducible research! 
+
+This branch contains the exact configurations, pretrained checkpoints, and evaluation scripts used in our experiments. It is intended to enable others to reproduce benchmark results, analyze ablations, and compare against UFM under standardized settings.
+
+## What's Included
+
+- **Pre-trained UFM models** in 560×420 and 980×644 resolutions (base and refine variants)
+- **Benchmark datasets** with automated download scripts for Sintel, KITTI, ETH3D, DTU, and TA-WB
+- **Preprocessed data packages** for ETH3D and DTU to skip hours of processing
+- **Standardized evaluation pipeline** supporting all UFM model/dataset combinations
+- **Reproducible experimental configurations** matching the paper results
+
+## Getting Started
+
+### 1. Installing the Benchmark Package
+The benchmark branch hosts all benchmark code as a separate python package at `/home/inf/UFM/benchmarks`. 
+
+```bash
+cd benchmarks
+pip install -e .
+
+# re-install the base package
+cd ..
+pip install -e .
+```
+
+### 2. Evaluation Data Prepration
+For faster verification of results, we provide both preprocessed benchmark datasets and processing scripts from the raw data. All data download scripts are located at `preprocess_datasets/download_scripts`. Please run the ones corresponding to `Sintel`, `KITTI`, `ETH3D`, `DTU`, `TA-WB`, and the metadata download script (required for `ETH3D` and `DTU` benchmarks). All script should be used as:
+
+```bash
+bash download_script.sh /path/to/data_root
+```
+Where `data_root` is a shared folder to host all benchmark data. 
+
+#### Preprocessed Data
+For quick verification of results and avoid hours of downloading and preprocessing, we directly provide processed data for `ETH3D` and `DTU`. To use them, run 
+
+```bash
+bash preprocess_datasets/download_scripts/download_eth3d_processed.sh /path/to/data_root
+bash preprocess_datasets/download_scripts/download_dtu_processed.sh /path/to/data_root
+```
+
+#### Raw Data
+We also provide complete data processing script to start from the raw data at `preprocess_datasets`.
+
+
+
+### 3. Checkpoints Downloading
+All `UFM` checkpoints will be automatically downloaded from HuggingFace.
+
+### 4. Run evaluation
+Run evaluation by 
+```bash
+python scripts/benchmark.py \ 
+    --solution_name [soln_name] \
+    --benchmark_name [bench_name] \
+    --dataset_root [data_root] \
+    --output_root [output_root]
+```
+
+Where `[data_root]` is the root folder in data processing, and `[soln_name]` and `[bench_name]` can be any combination of:
+
+Solution name: `ufm_base_560`, `ufm_refine_560`, `ufm_base_980`, `ufm_refine_980`.
+
+Benchmark name: `sintel_clean`, `sintel_final`, `kitti`, `eth3d_dense`, `dtu_dense`, `ta_wb_dense`.
+
+The results will be printed to the screen and also recorded as a text file in `[output_root]`.
+
+## Notes
+- The branch is frozen for reproducibility - please open issues instead of direct commits for changes or extensions.
+- If you wish to integrate UFM into your own pipeline, please refer to the main branch.
+- For any discrepancies between your reproduced results and the paper, please open a issue.
+- As explained in the paper, all `980` resolution checkpoints finetune only on high resolution data, which happens to be all from Optical Flow, as their last step. Thus they have degraded performance for wide-baseline.
+  
+
+### Reproducibility Notes
+- `ufm_980_refine` is a updated checkpoint that is slightly different from what's reported in the paper. It have slightly better performance on optical flow.
+`
+
+
 ## Updates
+- [2025/10/20] Benchmark & data script for primary results.
 - [2025/10/08] Released 980 resolution models.
 - [2025/06/10] Initial release of model checkpoint and inference code.
-
-## Stay Tuned for the Upcoming Updates!
-- Training and benchmarking code for all results presented in the paper.
-- UFM-Tiny for real-time applications such as robotics.
-
-## Overview
-
-UFM (Unified Flow & Matching, UniFlowMatch) is a simple, end-to-end trained transformer model that directly regresses pixel displacement images (flow) and can be applied concurrently to both optical flow and wide-baseline matching tasks.
-
-## Quick Start
-
-### Installation
-
-We use [UniCeption](https://github.com/castacks/UniCeption), a library which contains modular, config-swappable components for assembling end-to-end networks. To install UFM, recursively clone this repository and install the package with all dependencies:
-
-```bash
-git clone --recursive https://github.com/UniFlowMatch/UFM.git
-cd UFM
-
-# In case you cloned without --recursive:
-# git submodule update --init
-
-# Create and activate conda environment
-conda create -n ufm python=3.11 -y
-conda activate ufm
-
-# Install UniCeption dependency
-cd UniCeption
-pip install -e .
-cd ..
-
-# Install UFM with all dependencies
-pip install -e .
-
-# Optional: Install with specific extras
-# pip install -e ".[dev]"     # For development
-# pip install -e ".[demo]"    # For demo
-# pip install -e ".[all]"     # All optional dependencies
-
-# Optional: For development and linting
-pre-commit install  # Install pre-commit hooks
-```
-
-### Verify Installation
-
-Verify your installation by running the basic model test:
-
-```bash
-# Test installation
-ufm test
-
-# Or run the basic model test
-python uniflowmatch/models/ufm.py
-```
-
-Verify that `ufm_output.png` looks like `examples/example_ufm_output.png`.
-
-### Command Line Interface
-
-UFM provides a convenient CLI for common tasks:
-
-```bash
-# Test installation
-ufm test
-
-# Launch interactive demo
-ufm demo
-
-# Launch demo with specific settings
-ufm demo --port 8080 --share --model refine
-
-# Run inference on image pair
-ufm infer source.jpg target.jpg --output results/
-
-# Run inference with refinement model
-ufm infer img1.png img2.png --model refine --output ./output
-```
-
-### Python API
-
-```python
-import cv2
-import torch
-
-# Load the base model (for general use)
-from uniflowmatch.models.ufm import UniFlowMatchConfidence
-model = UniFlowMatchConfidence.from_pretrained("infinity1096/UFM-Base")
-
-# Or load the refinement model (for higher accuracy)
-from uniflowmatch.models.ufm import UniFlowMatchClassificationRefinement
-model = UniFlowMatchClassificationRefinement.from_pretrained("infinity1096/UFM-Refine")
-
-# High resolution model can be loaded via "infinity1096/UFM-Base-980" and "infinity1096/UFM-Refine-980"
-
-# Set the model to evaluation mode
-model.eval()
-
-# Load images using cv2 or PIL
-source_image = cv2.imread("path/to/source.jpg")
-target_image = cv2.imread("path/to/target.jpg")
-source_rgb = cv2.cvtColor(source_image, cv2.COLOR_BGR2RGB)  # Convert to RGB
-target_rgb = cv2.cvtColor(target_image, cv2.COLOR_BGR2RGB)  # Convert to RGB
-
-# Convert to torch tensors (uint8 or float32)
-# Forward call takes care of normalizing uint8 images appropriate to the UFM model
-source_image = torch.from_numpy(source_rgb)  # Shape: (H, W, 3)
-target_image = torch.from_numpy(target_rgb)  # Shape: (H, W, 3)
-
-# Predict correspondences
-with torch.no_grad():
-    result = model.predict_correspondences_batched(
-        source_image=source_image,
-        target_image=target_image,
-    )
-
-    flow = result.flow.flow_output[0].cpu().numpy()
-    covisibility = result.covisibility.mask[0].cpu().numpy()
-```
-
-## Interactive Demo
-
-### Online Demo
-
-Try our online demo without installation: [🤗 Hugging Face Demo](https://huggingface.co/spaces/infinity1096/UFM)
-
-### Local Gradio Demo
-
-Run the interactive Gradio demo locally to visualize UFM outputs:
-
-```bash
-# Using the CLI (recommended)
-ufm demo
-
-# Or run directly
-python gradio_demo.py
-
-# Advanced options
-ufm demo --port 8080 --share --model refine
-```
 
 ## License
 

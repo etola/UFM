@@ -270,7 +270,7 @@ class UniFlowMatchModelsBase(torch.nn.Module):
         view2 = {"img": scaled_img1, "symmetrized": False, "data_norm_type": self.encoder.data_norm_type}
 
         with torch.no_grad():
-            with torch.autocast("cuda", torch.bfloat16):
+            with torch.autocast("cuda", torch.float16):
                 result = self(view1, view2)
 
         rescaled_ufm_result = UFMOutputInterface()
