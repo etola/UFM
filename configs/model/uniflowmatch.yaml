@@ -1,0 +1,29 @@
+defaults:
+  - encoder: dinov2_l
+  - decoder: base_global
+  - feature_head: dpt
+  - adaptor_map: flow_scale_both
+
+model_class: UniFlowMatch
+
+data_norm_type: 'dinov2'
+info_sharing_and_head_structure: 'dual+single'
+num_channels: 2
+
+# for decoder
+returned_intermediate_layers: [5, 8]
+transformer_dim: ${model.decoder.transformer_dim}
+
+model_args:
+  # Encoder Args
+  encoder_str: ${model.encoder.encoder_str}
+  encoder_kwargs: ${model.encoder.encoder_kwargs}
+  # Info Sharing Args
+  info_sharing_str: ${model.decoder.info_sharing_type}
+  info_sharing_kwargs: ${model.decoder.info_sharing_kwargs}
+  # Output Head Args
+  head_type: dpt
+  feature_head_kwargs: ${model.feature_head}
+  adaptors_kwargs: ${model.adaptor_map}
+  # Pretrained checkpoint path
+  pretrained_checkpoint_path: null

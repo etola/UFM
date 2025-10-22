@@ -1,0 +1,15 @@
+dataset_str:
+  "Spring(
+    split='${dataset.spring.val.split}',
+    resolution=${dataset.spring.val.dataset_resolution},
+    seed=${dataset.spring.val.seed},
+    transform='${dataset.spring.val.transform}',
+    data_norm_type='${dataset.spring.val.data_norm_type}',
+    ROOT='${dataset.spring.val.ROOT}',
+    )"
+split: 'test'
+dataset_resolution: ${dataset.resolution_val}
+seed: 777
+transform: 'imgnorm'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/spring_processed

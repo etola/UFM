@@ -110,7 +110,7 @@ def get_parser():
     parser.add_argument(
         "-rd",
         "--root_dir",
-        default="/jet/home/yzhang25/match_anything/data/TartanAir/assembled/tartanair_640_mega_training_0203_good",
+        default="/match_anything/data/TartanAir/assembled/tartanair_640_mega_training_0203_good",
         type=str,
     )
 
@@ -298,6 +298,3 @@ if __name__ == "__main__":
                     f"{base_name}/pinhole/occlusion_supervision_mask",
                     rr.Image(occlusion_supervision_mask),
                 )
-
-
-## 795, 60,

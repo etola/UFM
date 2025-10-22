@@ -1,0 +1,16 @@
+dataset_str:
+  "HD1K(
+    split='${dataset.hd1k.train.split}',
+    resolution=${dataset.hd1k.train.dataset_resolution},
+    aug_crop=${dataset.hd1k.train.aug_crop},
+    aug_monocular=${dataset.hd1k.train.aug_monocular},
+    transform='${dataset.hd1k.train.transform}',
+    data_norm_type='${dataset.hd1k.train.data_norm_type}',
+    ROOT='${dataset.hd1k.train.ROOT}')"
+split: 'train'
+dataset_resolution: ${dataset.resolution_train}
+aug_crop: False
+aug_monocular: 0.0 # Not implemented Yet
+transform: 'imgnorm'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/hd1k_processed

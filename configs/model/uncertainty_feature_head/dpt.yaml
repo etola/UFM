@@ -1,0 +1,19 @@
+dpt_feature:
+  patch_size: ${model.encoder.patch_size}
+  hooks: [0, 1, 2, 3]
+  input_feature_dims:
+    - ${model.encoder.encoder_embed}
+    - ${model.decoder.transformer_dim}
+    - ${model.decoder.transformer_dim}
+    - ${model.decoder.transformer_dim}
+  layer_dims: [96, 192, 384, 768]
+  feature_dim: 256
+  use_bn: False
+  output_width_ratio: 1
+  pretrained_checkpoint_path: null
+
+dpt_processor:
+  input_feature_dim: 256
+  output_dim: ${model.uncertainty_adaptor_map.uncertainty_head_channels}
+  hidden_dims: [128, 128]
+  pretrained_checkpoint_path: null

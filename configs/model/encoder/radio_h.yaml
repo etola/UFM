@@ -1,0 +1,12 @@
+defaults:
+  - default
+
+encoder_str: radio
+patch_size: 16
+encoder_embed: 1280
+
+encoder_kwargs:
+  name: radio_encoder
+  data_norm_type: radio
+  patch_size: ${model.encoder.patch_size}
+  model_version: radio_v2.5-h

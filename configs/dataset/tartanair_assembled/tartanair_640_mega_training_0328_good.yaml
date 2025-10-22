@@ -1,0 +1,3 @@
+defaults:
+  - train: tartanair_640_mega_training_0328_good
+  - val: tartanair_640_mega_training_0328_good

@@ -1,0 +1,4 @@
+input_feature_dim: ${model.decoder.transformer_dim}
+output_dim: ${model.num_channels}
+patch_size: ${model.encoder.patch_size}
+pretrained_checkpoint_path: null

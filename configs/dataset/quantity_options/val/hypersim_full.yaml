@@ -1,0 +1,5 @@
+defaults:
+  - default
+
+test_dataset_str: "
+  + ${dataset.quantity_options.val.hypersim_pairs} @ ${dataset.hypersim.val.dataset_str}[::${dataset.quantity_options.val.hypersim_subsample}]"

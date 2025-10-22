@@ -1,0 +1,7 @@
+uncertainty_head_channels: 1
+
+adaptor_map_kwargs:
+  non_occluded_mask:
+    class: MaskAdaptor
+    kwargs:
+      name: non_occluded_mask

@@ -39,6 +39,7 @@ dependencies = [
     "jaxtyping",
     "Pillow",
     "scikit-learn",
+    "hydra-core"
 ]
 
 [project.optional-dependencies]

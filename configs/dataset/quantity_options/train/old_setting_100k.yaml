@@ -1,0 +1,16 @@
+defaults:
+  - default
+
+train_dataset_str: "
+  + 100_000 @ ${dataset.blendedmvs.train.dataset_str}
+  + 100_000 @ ${dataset.megadepth.train.dataset_str}
+  + 100_000 @ ${dataset.scannetpp.train.dataset_str}
+  + 100_000 @ ${dataset.tartanair_assembled.train.dataset_str}
+  + 100_000 @ ${dataset.kubric4d.train.dataset_str}
+  + 10_000 @ ${dataset.staticthings.train.dataset_str}
+  + 50_000 @ ${dataset.flyingthings.train.dataset_str}
+  + 25_000 @ ${dataset.habitat.train.dataset_str}
+  + 25_000 @ ${dataset.flyingchairs.train.dataset_str}
+  + 25_000 @ ${dataset.spring.train.dataset_str}
+  + 5_000 @ ${dataset.hd1k.train.dataset_str}
+  + 5_000 @ ${dataset.monkaa.train.dataset_str}"

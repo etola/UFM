@@ -1,0 +1,116 @@
+fit:
+  interval: 100
+  num_samples: 1
+
+validate:
+  interval: 1
+  num_samples: "all"
+
+visualizers:
+  flow_prediction:
+    class: ConcatVisualizer
+    kwargs:
+      visualizers:
+        - class: RGBVisualizer
+          kwargs:
+            field_name: batch/img1
+        - class: RGBVisualizer
+          kwargs:
+            field_name: batch/img2
+        - class: FlowVisualizer
+          kwargs:
+            field_name: batch/flow_fwd
+        - class: MaskVisualizer
+          kwargs:
+            field_name: batch/occlusion_fwd
+        - class: MaskedFlowVisualizer
+          kwargs:
+            flow_field: result/flow_fwd
+            mask_field: batch/occlusion_fwd
+            flow_scale: 25
+        - class: MaskedFlowVisualizer
+          kwargs:
+            flow_field: batch/flow_fwd
+            mask_field: batch/occlusion_fwd
+            flow_scale: 25
+  flow_errors:
+    class: ConcatVisualizer
+    kwargs:
+      visualizers:
+        - class: RGBVisualizer
+          kwargs:
+            field_name: batch/img1
+        - class: RGBVisualizer
+          kwargs:
+            field_name: batch/img2
+        - class: ErrorVisualizer
+          kwargs:
+            range: occlusion
+        - class: ErrorOutlierVisualizer
+          kwargs:
+            range: occlusion
+        - class: ErrorVisualizer
+          kwargs:
+            range: occlusion
+            target: regression_flow_output
+        - class: ErrorOutlierVisualizer
+          kwargs:
+            range: occlusion
+            target: regression_flow_output
+
+  feature_prediction:
+    class: ConcatVisualizer
+    kwargs:
+      visualizers:
+        - class: RGBVisualizer
+          kwargs:
+            field_name: batch/img1
+        - class: RGBVisualizer
+          kwargs:
+            field_name: batch/img2
+        - class: RefinementFeatureVisualizer
+          kwargs:
+            selection: feature0
+        - class: RefinementFeatureVisualizer
+          kwargs:
+            selection: feature1
+
+  covisible_prediction:
+    class: ConcatVisualizer
+    kwargs:
+      visualizers:
+        - class: RGBVisualizer
+          kwargs:
+            field_name: batch/img1
+        - class: RGBVisualizer
+          kwargs:
+            field_name: batch/img2
+        - class: MaskVisualizer
+          kwargs:
+            field_name: batch/occlusion_fwd
+        - class: MaskVisualizer
+          kwargs:
+            field_name: result/occlusion_fwd
+
+  covariance_prediction:
+    class: ConcatVisualizer
+    kwargs:
+      visualizers:
+        - class: RGBVisualizer
+          kwargs:
+            field_name: batch/img1
+        - class: RGBVisualizer
+          kwargs:
+            field_name: batch/img2
+        - class: CovarianceVisualizer
+          kwargs:
+            axis: xx
+        - class: CovarianceVisualizer
+          kwargs:
+            axis: yy
+        - class: ErrorVisualizer
+          kwargs:
+            range: occlusion
+        - class: ErrorOutlierVisualizer
+          kwargs:
+            range: occlusion

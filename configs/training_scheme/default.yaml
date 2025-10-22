@@ -1,0 +1,48 @@
+defaults:
+  - lr_scheduler: cosine
+  - torch_compile: disabled
+
+# Batch size for training and validation, all GPU combined
+effective_batch_size: 128
+
+# symmetrize inputs
+symmetrize_inputs: True
+
+# Learning rate for each part of the model. If set to 0.0, the
+# backward pass will be disabled.
+learning_rate:
+  encoder: 5e-6
+  info_sharing: 1e-4
+  output_head: 1e-4
+  uncertainty_head: 1e-4
+  
+accumulate_grad_batches: 1
+
+# weight decay for AdamW optimizer
+weight_decay: 0.05
+
+# beta values for AdamW optimizer
+betas: [0.9, 0.95]
+
+# Number of epochs to train for
+num_epochs: 48
+
+# warmup epochs for lr scheduler
+warmup_epochs: 10
+
+# checkpointing frequency
+save_ckpt_every_steps: 5000
+
+save_ckpt_every_epochs: 1
+keep_n_epoch_ckpts: 5
+
+# gradient clipping
+gradient_clip_algorithm: norm
+gradient_clip_val: 1.0
+
+# training precision
+precision: bf16-mixed
+
+# validation
+validate_every_epochs: 1
+validate_steps: null

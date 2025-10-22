@@ -1,0 +1,5 @@
+defaults:
+  - default
+
+train_dataset_str: "
+  + ${dataset.quantity_options.train.spring_pairs} @ ${dataset.spring.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]"

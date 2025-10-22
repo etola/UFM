@@ -1,0 +1,23 @@
+dataset_str:
+  "Monkaa(
+    split='${dataset.monkaa.train.split}',
+    resolution=${dataset.monkaa.train.dataset_resolution},
+    aug_crop=${dataset.monkaa.train.aug_crop},
+    aug_monocular=${dataset.monkaa.train.aug_monocular},
+    transform='${dataset.monkaa.train.transform}',
+    data_norm_type='${dataset.monkaa.train.data_norm_type}',
+    ROOT='${dataset.monkaa.train.ROOT}',
+    aug_left_right=${dataset.flyingthings.train.aug_left_right},
+    aug_clean_final=${dataset.flyingthings.train.aug_clean_final},
+    dstype='${dataset.flyingthings.train.dstype}')"
+split: 'train'
+dstype: 'clean'
+dataset_resolution: ${dataset.resolution_train}
+# mask_bg: 'rand' # not implemented yet
+aug_crop: False # aug crop also not implemented yet
+aug_monocular: 0.0 # Not implemented Yet
+aug_left_right: False
+aug_clean_final: False
+transform: 'imgnorm'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/monkaa_processed

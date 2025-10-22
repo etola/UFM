@@ -1,0 +1,15 @@
+
+flow:
+  class: FlowAdaptor
+  kwargs:
+    name: flow
+    flow_mean: [0.0, 0.0]
+    flow_std: [25, 25]
+    base_shape: [224, 224]
+    scale_strategy: scale_width
+    output_normalized_coordinate: False
+
+mol_info:
+  class: MoLAdaptor
+  kwargs:
+    name: mol_info

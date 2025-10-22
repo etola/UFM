@@ -1,0 +1,17 @@
+dataset_str:
+  "FlyingChairs(
+    split='${dataset.flyingchairs.train.split}',
+    resolution=${dataset.flyingchairs.train.dataset_resolution},
+    aug_crop=${dataset.flyingchairs.train.aug_crop},
+    aug_monocular=${dataset.flyingchairs.train.aug_monocular},
+    transform='${dataset.flyingchairs.train.transform}',
+    data_norm_type='${dataset.flyingchairs.train.data_norm_type}',
+    ROOT='${dataset.flyingchairs.train.ROOT}',
+    aug_low_light=True)"
+split: 'train'
+dataset_resolution: ${dataset.resolution_train}
+aug_crop: True
+aug_monocular: 0.0 # Not implemented Yet
+transform: 'colorjitter'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/flyingchairs

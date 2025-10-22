@@ -1,0 +1,16 @@
+dataset_str:
+  "HyperSim(
+    split='${dataset.hypersim.train.split}',
+    resolution=${dataset.hypersim.train.dataset_resolution},
+    aug_crop='${dataset.hypersim.train.aug_crop}',
+    aug_monocular=${dataset.hypersim.train.aug_monocular},
+    transform='${dataset.hypersim.train.transform}',
+    data_norm_type='${dataset.hypersim.train.data_norm_type}',
+    ROOT='${dataset.hypersim.train.ROOT}')"
+split: 'train'
+dataset_resolution: ${dataset.resolution_train}
+aug_crop: False
+aug_monocular: 0.005
+transform: 'colorjitter'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/hypersim_processed

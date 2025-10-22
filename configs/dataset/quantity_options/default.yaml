@@ -1,0 +1,3 @@
+defaults:
+  - train: all_100k
+  - val: all_full

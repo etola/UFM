@@ -1,0 +1,19 @@
+dataset_str:
+  "BlendedMVS(
+    split='${dataset.blendedmvs.train.split}',
+    resolution=${dataset.blendedmvs.train.dataset_resolution},
+    aug_crop='${dataset.blendedmvs.train.aug_crop}',
+    aug_monocular=${dataset.blendedmvs.train.aug_monocular},
+    transform='${dataset.blendedmvs.train.transform}',
+    data_norm_type='${dataset.blendedmvs.train.data_norm_type}',
+    ROOT='${dataset.blendedmvs.train.ROOT}',
+    pair_metadata_path='${dataset.blendedmvs.train.pair_metadata_path}',
+    aug_low_light=False)"
+split: 'train'
+dataset_resolution: ${dataset.resolution_train}
+aug_crop: auto_crop_asis
+aug_monocular: 0.005
+transform: 'colorjitter'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/blendedmvs_processed
+pair_metadata_path: ${root_data_dir}/dust3r_data_pairs/blendedmvs_pairs.npy

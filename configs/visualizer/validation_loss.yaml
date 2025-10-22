@@ -1,0 +1,46 @@
+fit:
+  interval: 500
+  num_samples: 1
+
+validate:
+  interval: 1
+  num_samples: "all"
+
+visualizers:
+  flow_prediction:
+    class: ConcatVisualizer
+    kwargs:
+      visualizers:
+        - class: RGBVisualizer
+          kwargs:
+            field_name: batch/img1
+        - class: RGBVisualizer
+          kwargs:
+            field_name: batch/img2
+        - class: FlowVisualizer
+          kwargs:
+            field_name: batch/flow_fwd
+        - class: MaskVisualizer
+          kwargs:
+            field_name: batch/occlusion_fwd
+        - class: MaskVisualizer
+          kwargs:
+            field_name: result/occlusion_fwd
+        - class: MaskedFlowLossVisualizer
+          kwargs:
+            flow_field: result/flow_fwd
+            mask_field: result/occlusion_fwd
+            flow_scale: 25
+            loss_config:
+              class: FlowEPECovarianceLoss
+              kwargs:
+                multiplier: 1.0
+                supervision_range: occlusion
+                alpha: 1.0
+                minimum_mask_threshold: 0.1
+                supervise_backward: true
+        - class: MaskedFlowVisualizer
+          kwargs:
+            flow_field: batch/flow_fwd
+            mask_field: batch/occlusion_fwd
+            flow_scale: 25

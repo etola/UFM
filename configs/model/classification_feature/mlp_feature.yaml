@@ -1,0 +1,10 @@
+
+class: MLPFeature
+kwargs:
+# arithmatic operation is not supported in hydra, but we will parse it in the code
+  input_feature_dim: ${model.encoder.encoder_embed} + ${model.decoder.transformer_dim}
+  patch_size: ${model.encoder.patch_size}
+  output_dim: 16
+  mlp_ratio: 2
+  bias: true
+  pretrained_checkpoint_path: null

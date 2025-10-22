@@ -1,0 +1,10 @@
+
+flow:
+  class: FlowAdaptor
+  kwargs:
+    name: flow
+    flow_mean: [0.0, 0.0]
+    flow_std: [25, 25]
+    base_shape: [224, 224]
+    scale_strategy: scale_both
+    output_normalized_coordinate: False

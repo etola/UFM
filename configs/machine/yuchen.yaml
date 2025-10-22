@@ -1,0 +1,7 @@
+defaults:
+  - default
+
+root_data_dir: /home/inf/match_anything/data
+uniception_pth_root: /home/inf/match_anything/UniCeption/checkpoints
+
+tartanair_root_data_dir: /home/inf/match_anything/data

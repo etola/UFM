@@ -6,19 +6,44 @@ from uniflowmatch.datasets.base.flow_postprocessing import (
     flow_occlusion_post_processing,
 )
 
-# benchmark datasets
-from uniflowmatch.datasets.dtu import DTU
-from uniflowmatch.datasets.eth3d import ETH3D
+from uniflowmatch.datasets.blendedmvs import BlendedMVS
+from uniflowmatch.datasets.flyingchairs import FlyingChairs
+from uniflowmatch.datasets.flyingthings3d import FlyingThings3D
+from uniflowmatch.datasets.habitat import Habitat
+from uniflowmatch.datasets.hd1k import HD1K
+from uniflowmatch.datasets.hypersim import HyperSim
+from uniflowmatch.datasets.kubric4d import Kubric4D
+from uniflowmatch.datasets.megadepth import MegaDepth
+from uniflowmatch.datasets.monkaa import Monkaa
+from uniflowmatch.datasets.scannetpp import ScanNetpp
+from uniflowmatch.datasets.spring import Spring
+from uniflowmatch.datasets.staticthings3d import StaticThings3D
 from uniflowmatch.datasets.tartanair_assembled import TartanairAssembled
 
+# datasets for evaluation
+from uniflowmatch.datasets.dtu import DTU
+from uniflowmatch.datasets.eth3d import ETH3D
+
 __all__ = [
+    "BlendedMVS",
+    "MegaDepth",
+    "ScanNetpp",
+    "Habitat",
+    "FlyingChairs",
+    "FlyingThings3D",
+    "Monkaa",
     "TartanairAssembled",
+    "StaticThings3D",
+    "Spring",
+    "HD1K",
+    "Kubric4D",
     "DTU",
     "ETH3D",
     "get_data_loader",
     "flow_occlusion_post_processing",
     "collate_fn_with_delayed_flow_postprocessing",
     "apply_flow_postprocessing_and_merge_batch",
+    "HyperSim",
 ]
 
 

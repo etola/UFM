@@ -1,0 +1,33 @@
+train_loss:
+  robust_epe:
+    class: RobustRegressionLoss
+    kwargs:
+      multiplier: 1.0
+      supervision_range: occlusion
+      minimum_mask_threshold: 0.1
+      alpha: 0.5
+      c: 0.24
+
+  covisibility_ce:
+    class: CrossEntropyLoss
+    kwargs:
+      multiplier: 10
+      target: "occlusion"
+      target_supervision_mask: occlusion_supervision_mask
+
+test_loss:
+  robust_epe:
+    class: RobustRegressionLoss
+    kwargs:
+      multiplier: 1.0
+      supervision_range: occlusion
+      minimum_mask_threshold: 0.1
+      alpha: 0.5
+      c: 0.24
+
+  covisibility_ce:
+    class: CrossEntropyLoss
+    kwargs:
+      multiplier: 10
+      target: "occlusion"
+      target_supervision_mask: occlusion_supervision_mask

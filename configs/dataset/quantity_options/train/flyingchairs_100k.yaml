@@ -1,0 +1,5 @@
+defaults:
+  - default
+
+train_dataset_str: "
+  + 100_000 @ ${dataset.flyingchairs.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]"

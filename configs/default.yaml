@@ -1,0 +1,24 @@
+defaults:
+  - dataset: ???
+  - loss: ???
+  - model: uniflowmatch_covisibility
+  - training_scheme: default
+  - machine: yuchen
+  - visualizer: flow_covisible
+
+root_data_dir: ${machine.root_data_dir}
+tartanair_root_data_dir: ${machine.tartanair_root_data_dir}
+seed: 42
+find_unused_parameters: True
+
+# resume model = initialize the model only
+resume_model: null
+
+# resume all = resume model + optimizer + scheduler + etc. to resume training
+resume_all: null
+
+# launch mode can be:
+# - "train": launch the actual training
+# - "debug_dataset": launch dataset debug mode that does fine visualization of the data seen by the model
+launch_mode: train
+disable_wandb: False

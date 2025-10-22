@@ -1,0 +1,13 @@
+defaults:
+  - default
+  - override quantity_options/train: opticalflow_100k
+  - override quantity_options/val: opticalflow_full
+  - override hypersim/train: cropping
+  - override blendedmvs/train: cropping
+  - override megadepth/train: cropping
+  - override habitat: cropping
+  - override scannetpp/train: anymap_cropping
+  - override staticthings/train: cropping
+
+resolution_train: ${dataset.resolution_options.980_many_opticalflow_ar}
+resolution_val: ${dataset.resolution_options.980_1_52_ar}

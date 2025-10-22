@@ -1,0 +1,13 @@
+defaults:
+  - default
+
+encoder_str: dinov2
+patch_size: 14
+encoder_embed: 1024
+
+encoder_kwargs:
+  name: dinov2_encoder
+  data_norm_type: dinov2
+  patch_size: ${model.encoder.patch_size}
+  size: large
+  with_registers: False

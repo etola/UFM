@@ -1,0 +1,24 @@
+defaults:
+  - default
+
+base_pairs: 100_000
+data_subsample_ratio: 1
+
+# Wide Baseline Data
+blendedmvs_pairs:     100_000
+megadepth_pairs:      100_000
+tartanair_pairs:      100_000
+scannet_pairs:        100_000
+habitat_pairs:        25_000
+static_things_pairs:  10_000
+kubrics_4d_pairs:     100_000
+
+# Optical Flow Data
+flyingthings_pairs:   "???"
+flyingchairs_pairs:   "???"
+spring_pairs:         "???"
+monkaa_pairs:         "???"
+hd1k_pairs:           "???"
+
+train_dataset_str: "
+  + ${dataset.quantity_options.train.megadepth_pairs} @ ${dataset.megadepth.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]"

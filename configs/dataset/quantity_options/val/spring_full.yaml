@@ -1,0 +1,5 @@
+defaults:
+  - default
+
+test_dataset_str: "
+  + ${dataset.quantity_options.val.spring_pairs} @ ${dataset.spring.val.dataset_str}[::1]"

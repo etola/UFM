@@ -1,0 +1,40 @@
+train_loss:
+  epe_all:
+    class: RobustRegressionLoss
+    kwargs:
+      multiplier: 1.0
+      supervision_range: all
+      minimum_mask_threshold: 0.1
+      fov_threshold: 0.25
+      alpha: 0.5
+      c: 0.24
+
+  refinement_cross_entropy:
+    class: RefinementCrossEntropyLossEfficient
+    kwargs:
+      multiplier: 10.0
+      supervision_range: occlusion
+      supervision_strategy: 4_point_average
+
+test_loss:
+  epe:
+    class: FlowEPELoss
+    kwargs:
+      multiplier: 1.0
+      supervision_range: occlusion
+      minimum_mask_threshold: 0.1
+
+  epe_all:
+    class: FlowEPELoss
+    kwargs:
+      multiplier: 1.0
+      supervision_range: all
+      fov_threshold: 0.25
+      minimum_mask_threshold: 0.1
+
+  refinement_cross_entropy:
+    class: RefinementCrossEntropyLoss
+    kwargs:
+      multiplier: 10.0
+      supervision_range: occlusion
+      supervision_strategy: 4_point_average

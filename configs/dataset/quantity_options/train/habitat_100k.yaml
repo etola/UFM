@@ -1,0 +1,8 @@
+defaults:
+  - default
+
+habitat_pairs:        100_000
+
+train_dataset_str: "
+  + ${dataset.quantity_options.train.habitat_pairs} @ ${dataset.habitat.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+"

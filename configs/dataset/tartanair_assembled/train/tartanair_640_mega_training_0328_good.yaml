@@ -1,0 +1,18 @@
+dataset_str:
+  "TartanairAssembled(
+    split='${dataset.tartanair_assembled.train.split}',
+    resolution=${dataset.tartanair_assembled.train.dataset_resolution},
+    aug_crop=${dataset.tartanair_assembled.train.aug_crop},
+    aug_monocular=${dataset.tartanair_assembled.train.aug_monocular},
+    transform='${dataset.tartanair_assembled.train.transform}',
+    data_norm_type='${dataset.tartanair_assembled.train.data_norm_type}',
+    ROOT='${dataset.tartanair_assembled.train.ROOT}',
+    aug_low_light=False)"
+
+split: 'train'
+dataset_resolution: ${dataset.resolution_train}
+aug_crop: True
+aug_monocular: 0.0
+transform: 'colorjitter'
+data_norm_type: ${model.data_norm_type}
+ROOT: '${root_data_dir}/TartanAir/assembled/tartanair_640_mega_training_0328_good'

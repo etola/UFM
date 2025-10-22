@@ -1,0 +1,13 @@
+defaults:
+  - default
+  - override quantity_options/train: static_pinhole_100k
+  - override quantity_options/val: static_pinhole_full
+  - override blendedmvs/train: cropping
+  - override megadepth/train: cropping
+  - override habitat/train: cropping
+  - override scannetpp: anymap_cropping
+  - override staticthings/train: cropping
+
+
+resolution_train: ${dataset.resolution_options.560_many_ar}
+resolution_val: ${dataset.resolution_options.560_1_33_ar}

@@ -1,0 +1,3 @@
+defaults:
+  - train: widebaseline_100k
+  - val: all_full

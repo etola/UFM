@@ -1,0 +1,58 @@
+defaults:
+  - encoder: dinov2_l
+  - decoder: base_global
+  - feature_head: dpt
+  - adaptor_map: flow_scale_both
+  - classification_feature: mlp_feature
+  - uncertainty_adaptor_map: covisibility
+  - uncertainty_feature_head: dpt
+
+model_class: UniFlowMatchClassificationRefinement
+
+data_norm_type: 'dinov2'
+info_sharing_and_head_structure: 'dual+single'
+num_channels: 2
+
+# for decoder
+returned_intermediate_layers: [5, 8]
+transformer_dim: ${model.decoder.transformer_dim}
+
+# for classification refinement
+classification_head_type: patch_mlp
+classification_head_kwargs: ${model.classification_feature.kwargs}
+
+pretrained_backbone_checkpoint_path: null
+
+refinement_range: 5 # pixels
+use_unet_feature: False
+use_unet_batchnorm: False
+feature_combine_method: 'modulate'
+
+detach_uncertainty_head: False
+
+model_args:
+  # Encoder Args
+  encoder_str: ${model.encoder.encoder_str}
+  encoder_kwargs: ${model.encoder.encoder_kwargs}
+  # Info Sharing Args
+  info_sharing_str: ${model.decoder.info_sharing_type}
+  info_sharing_kwargs: ${model.decoder.info_sharing_kwargs}
+  # Output Head Args
+  head_type: dpt
+  feature_head_kwargs: ${model.feature_head}
+  adaptors_kwargs: ${model.adaptor_map}
+  # Uncertainty Head Args
+  detach_uncertainty_head: ${model.detach_uncertainty_head}
+  uncertainty_head_type: dpt
+  uncertainty_head_kwargs: ${model.uncertainty_feature_head}
+  uncertainty_adaptors_kwargs: ${model.uncertainty_adaptor_map.adaptor_map_kwargs}
+  # Classification Head Args
+  classification_head_type: ${model.classification_head_type}
+  classification_head_kwargs: ${model.classification_head_kwargs}
+  refinement_range: ${model.refinement_range}
+  use_unet_feature: ${model.use_unet_feature}
+  use_unet_batchnorm: ${model.use_unet_batchnorm}
+  feature_combine_method: ${model.feature_combine_method}
+  # Pretrained checkpoint path
+  pretrained_backbone_checkpoint_path: ${model.pretrained_backbone_checkpoint_path}
+  pretrained_checkpoint_path: null

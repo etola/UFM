@@ -1,0 +1,16 @@
+dataset_str:
+  "ScanNetpp(
+    split='${dataset.scannetpp.train.split}',
+    resolution=${dataset.scannetpp.train.dataset_resolution},
+    aug_crop='${dataset.scannetpp.train.aug_crop}',
+    aug_monocular=${dataset.scannetpp.train.aug_monocular},
+    transform='${dataset.scannetpp.train.transform}',
+    data_norm_type='${dataset.scannetpp.train.data_norm_type}',
+    ROOT='${dataset.scannetpp.train.ROOT}')"
+split: 'train'
+dataset_resolution: ${dataset.resolution_train}
+aug_crop: False
+aug_monocular: 0.005
+transform: 'colorjitter'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/scannetpp_processed

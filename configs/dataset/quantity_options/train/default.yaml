@@ -1,0 +1,22 @@
+base_pairs: 100_000
+data_subsample_ratio: 1
+
+# Wide Baseline Data
+ariadtc_pairs:        50_000
+blendedmvs_pairs:     100_000
+megadepth_pairs:      100_000
+tartanair_pairs:      75_000
+scannet_pairs:        100_000
+hypersim_pairs:       50_000
+habitat_pairs:        12_500
+static_things_pairs:  10_000
+kubrics_4d_pairs:     37_500
+
+# Optical Flow Data
+flyingthings_pairs:   50_000
+flyingchairs_pairs:   25_000
+spring_pairs:         25_000
+monkaa_pairs:         5_000
+hd1k_pairs:           5_000
+
+train_dataset_str: ???

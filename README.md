@@ -18,91 +18,69 @@
     <em>UFM unifies the tasks of Optical Flow Estimation and Wide Baseline Matching and provides accurate dense correspondences for in-the-wild images at significantly fast inference speeds.</em>
 </p>
 
-## Welcome to the Benchmark Branch
-If you reach here, you are interested in verifying the claims made in the UFM paper, thank you for the interest and for contributing to reproducible research! 
+## Welcome to the Training Branch
+If you reach here, you are interested in building upon UFM, thank you for your effort contributing to generalizable correspondence prediction!
 
-This branch contains the exact configurations, pretrained checkpoints, and evaluation scripts used in our experiments. It is intended to enable others to reproduce benchmark results, analyze ablations, and compare against UFM under standardized settings.
-
-## What's Included
-
-- **Pre-trained UFM models** in 560×420 and 980×644 resolutions (base and refine variants)
-- **Benchmark datasets** with automated download scripts for Sintel, KITTI, ETH3D, DTU, and TA-WB
-- **Preprocessed data packages** for ETH3D and DTU to skip hours of processing
-- **Standardized evaluation pipeline** supporting all UFM model/dataset combinations
-- **Reproducible experimental configurations** matching the paper results
-
-## Getting Started
-
-### 1. Installing the Benchmark Package
-The benchmark branch hosts all benchmark code as a separate python package at `/home/inf/UFM/benchmarks`. 
-
-```bash
-cd benchmarks
-pip install -e .
-
-# re-install the base package
-cd ..
-pip install -e .
-```
-
-### 2. Evaluation Data Prepration
-For faster verification of results, we provide both preprocessed benchmark datasets and processing scripts from the raw data. All data download scripts are located at `preprocess_datasets/download_scripts`. Please run the ones corresponding to `Sintel`, `KITTI`, `ETH3D`, `DTU`, `TA-WB`, and the metadata download script (required for `ETH3D` and `DTU` benchmarks). All script should be used as:
-
-```bash
-bash download_script.sh /path/to/data_root
-```
-Where `data_root` is a shared folder to host all benchmark data. 
-
-#### Preprocessed Data
-For quick verification of results and avoid hours of downloading and preprocessing, we directly provide processed data for `ETH3D` and `DTU`. To use them, run 
-
-```bash
-bash preprocess_datasets/download_scripts/download_eth3d_processed.sh /path/to/data_root
-bash preprocess_datasets/download_scripts/download_dtu_processed.sh /path/to/data_root
-```
-
-#### Raw Data
-We also provide complete data processing script to start from the raw data at `preprocess_datasets`.
-
-
-
-### 3. Checkpoints Downloading
-All `UFM` checkpoints will be automatically downloaded from HuggingFace.
-
-### 4. Run evaluation
-Run evaluation by 
-```bash
-python scripts/benchmark.py \ 
-    --solution_name [soln_name] \
-    --benchmark_name [bench_name] \
-    --dataset_root [data_root] \
-    --output_root [output_root]
-```
-
-Where `[data_root]` is the root folder in data processing, and `[soln_name]` and `[bench_name]` can be any combination of:
-
-Solution name: `ufm_base_560`, `ufm_refine_560`, `ufm_base_980`, `ufm_refine_980`.
-
-Benchmark name: `sintel_clean`, `sintel_final`, `kitti`, `eth3d_dense`, `dtu_dense`, `ta_wb_dense`.
-
-The results will be printed to the screen and also recorded as a text file in `[output_root]`.
-
-## Notes
-- The branch is frozen for reproducibility - please open issues instead of direct commits for changes or extensions.
-- If you wish to integrate UFM into your own pipeline, please refer to the main branch.
-- For any discrepancies between your reproduced results and the paper, please open a issue.
-- As explained in the paper, all `980` resolution checkpoints finetune only on high resolution data, which happens to be all from Optical Flow, as their last step. Thus they have degraded performance for wide-baseline.
-  
-
-### Reproducibility Notes
-- `ufm_980_refine` is a updated checkpoint that is slightly different from what's reported in the paper. It have slightly better performance on optical flow.
-`
-
+This branch contains the data downloading and processing instructions, example and full training scripts used to create UFM.
 
 ## Updates
+- [2025/10/21] Complete training and most data processing scripts.
 - [2025/10/20] Benchmark & data script for primary results.
 - [2025/10/08] Released 980 resolution models.
 - [2025/06/10] Initial release of model checkpoint and inference code.
+
+## What's Included
+
+- **Data downloading and processing scripts** for recreate entire UFM data.
+- **Example and complete training code** for recreating UFM training.
+- **Logging and visualization support** to monitor training.
+
+## Getting Started
+### Setup Environment
+
+You will need to `pip install` again if you switched to here from the other branches.
+
+
+### Setup Data
+Please refer to `preprocess_datasets/README.md` for a complete guide. 
+
+<!-- We provide preprocessed blendedmvs dataset for running the example training scripts. -->
+
+### Setup Configuration
+
+You need to setup data paths for your machine. please modify `configs/machine/your_machine.yaml` to another name and modify `root_data_dir` to point to the root folder of all `*_processed` folders. 
+
+The `machines` configuration allows the same code to run on multiple places seamlessly. You can see how they work at the top of the example training scripts. 
+
+### Example Training
+
+Modify the logic for setting the `machine` environment variable in the file, and run: 
+
+```bash
+python bash_scripts/examples/blendedmvs.sh
+```
+
+## Functional Components
+
+|Component | Code location | Documentation |
+|-------------|---------------|---------------|
+|Base Model Architecture| `uniflowmatch/models/ufm.py` line 474 | paper Section `3.1`|
+|Refinement Model Architecture| `uniflowmatch/models/ufm.py` line 710 | paper Section `3.1`|
+|Computing Covisible Masks| `uniflowmatch/datasets/base/flow_postprocessing.py` line `544`| paper Appendix `A`|
+|Robust EPE Loss|`uniflowmatch/loss/epe.py` | paper Section `3.4`, Appendix `H`|
+|Refinement Loss|`uniflowmatch/loss/refinement_cross_entropy[_efficient].py`| paper Appendix `D`|
+|Visualizations|`uniflowmatch/utils/viz.py`| |
+
+## Entry Points
+| Script | Function |
+|--------|----------|
+| `bash_scripts/examples/blendedmvs.sh` | Example training of the UFM base model |
+| `bash_scripts/examples/refinement.sh` | Example training of the refinement network |
+| `bash_scripts/training/megatraining_560.sh` | Train `UFM 560` |
+| `bash_scripts/training/megatraining_980.sh` | Train `UFM 980` from `UFM 560` |
+| `bash_scripts/training/megatraining_refinement_560.sh` | Train `UFM 560 Refine` from `UFM 560` |
+| `bash_scripts/training/megatraining_refinement_980.sh` | Train `UFM 980 Refine` from `UFM 560` |
+
 
 ## License
 

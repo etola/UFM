@@ -1,0 +1,29 @@
+train_loss:
+  occlusion_bce:
+    class: CrossEntropyLoss
+    kwargs:
+      multiplier: 1.0
+      target: occlusion
+      target_supervision_mask: occlusion_supervision_mask
+
+  flow_epe:
+    class: FlowEPELoss
+    kwargs:
+      multiplier: 1.0
+      supervision_range: occlusion
+      minimum_mask_threshold: 0.1
+
+test_loss:
+  occlusion_bce:
+    class: CrossEntropyLoss
+    kwargs:
+      multiplier: 1.0
+      target: occlusion
+      target_supervision_mask: occlusion_supervision_mask
+
+  flow_epe:
+    class: FlowEPELoss
+    kwargs:
+      multiplier: 1.0
+      supervision_range: occlusion
+      minimum_mask_threshold: 0.1

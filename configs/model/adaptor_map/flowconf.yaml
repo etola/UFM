@@ -1,0 +1,12 @@
+flow_with_confidence:
+  class: FlowWithConfidenceAdaptor
+  kwargs:
+    name: flow_with_confidence
+    flow_mean: [0.0, 0.0]
+    flow_std: [25, 25]
+    base_shape: [224, 224]
+    scale_strategy: scale_width
+    output_normalized_coordinate: False
+    confidence_type: exp
+    vmin: 0.1
+    vmax: .inf

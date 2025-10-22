@@ -1,0 +1,4 @@
+scheduler: linear
+scheduler_kwargs:
+  num_warpup_epochs: 0.1
+  num_epochs: ${training_scheme.num_epochs}

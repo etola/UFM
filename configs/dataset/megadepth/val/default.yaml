@@ -1,0 +1,16 @@
+dataset_str:
+  "MegaDepth(
+    split='${dataset.megadepth.val.split}',
+    resolution=${dataset.megadepth.val.dataset_resolution},
+    seed=${dataset.megadepth.val.seed},
+    transform='${dataset.megadepth.val.transform}',
+    data_norm_type='${dataset.megadepth.val.data_norm_type}',
+    ROOT='${dataset.megadepth.val.ROOT}',
+    pair_metadata_path='${dataset.megadepth.val.pair_metadata_path}')"
+split: 'val'
+dataset_resolution: ${dataset.resolution_val}
+seed: 777
+transform: 'imgnorm'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/megadepth_processed
+pair_metadata_path: ${root_data_dir}/dust3r_data_pairs/megadepth_pairs.npz

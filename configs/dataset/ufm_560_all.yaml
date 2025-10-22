@@ -1,0 +1,12 @@
+defaults:
+  - default
+  - override quantity_options/train: old_setting_100k
+  - override quantity_options/val: old_full
+  - override blendedmvs/train: cropping
+  - override megadepth/train: cropping
+  - override habitat: default
+  - override scannetpp/train: anymap_cropping
+  - override staticthings/train: cropping
+
+resolution_train: ${dataset.resolution_options.560_many_non_square_ar}
+resolution_val: ${dataset.resolution_options.560_1_33_ar}

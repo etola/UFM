@@ -1,0 +1,8 @@
+defaults:
+  - default
+
+test_dataset_str: "
+  + ${dataset.quantity_options.val.blendedmvs_pairs} @ ${dataset.blendedmvs.val.dataset_str}[::${dataset.quantity_options.val.blendedmvs_subsample}]
+  + ${dataset.quantity_options.val.megadepth_pairs} @ ${dataset.megadepth.val.dataset_str}[::${dataset.quantity_options.val.megadepth_subsample}]
+  + ${dataset.quantity_options.val.scannet_pairs} @ ${dataset.scannetpp.val.dataset_str}[::${dataset.quantity_options.val.scannet_subsample}]
+  + ${dataset.quantity_options.val.habitat_pairs} @ ${dataset.habitat.val.dataset_str}[::1]"

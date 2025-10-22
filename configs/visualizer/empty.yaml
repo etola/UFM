@@ -1,0 +1,9 @@
+fit:
+  interval: 500
+  num_samples: 1
+
+validate:
+  interval: 10
+  num_samples: 1
+
+visualizers: {}

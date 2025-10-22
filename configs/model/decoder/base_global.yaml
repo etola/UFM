@@ -1,0 +1,28 @@
+defaults:
+  - default
+
+info_sharing_type: global_attention
+info_sharing_kwargs:
+  name: global_attention
+  input_embed_dim: ${model.encoder.encoder_embed}
+  max_num_views: 2
+  use_rand_idx_pe_for_non_reference_views: False
+  size: base
+  depth: 12
+  dim: 768
+  num_heads: 12
+  mlp_ratio: 4.0
+  qkv_bias: True
+  qk_norm: False
+  proj_drop: 0.0
+  attn_drop: 0.0
+  init_values: null
+  drop_path: 0.0
+  custom_positional_encoding: null
+  pretrained_checkpoint_path: null
+  gradient_checkpointing: False
+  norm_intermediate: True
+  indices: ${model.returned_intermediate_layers}
+
+# interface towards other configs
+transformer_dim: ${model.decoder.info_sharing_kwargs.dim}

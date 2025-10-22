@@ -1,0 +1,18 @@
+dataset_str:
+  "Habitat(
+    split='${dataset.habitat.train.split}',
+    size='${dataset.habitat.train.size}',
+    resolution=${dataset.habitat.train.dataset_resolution},
+    aug_crop='${dataset.habitat.train.aug_crop}',
+    aug_monocular=${dataset.habitat.train.aug_monocular},
+    transform='${dataset.habitat.train.transform}',
+    data_norm_type='${dataset.habitat.train.data_norm_type}',
+    ROOT='${dataset.habitat.train.ROOT}')"
+split: 'train'
+size: 35000
+dataset_resolution: ${dataset.resolution_train}
+aug_crop: False
+aug_monocular: 0.005
+transform: 'colorjitter'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/habitat_processed/replica_cad_baked_lighting

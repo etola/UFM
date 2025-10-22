@@ -1,0 +1,33 @@
+defaults:
+  - default
+
+# Optical Flow Data
+blendedmvs_pairs:     1_000
+megadepth_pairs:      1_000
+tartanair_pairs:      1_000
+scannet_pairs:        1_000
+habitat_pairs:        1_000
+static_things_pairs:  "???"
+
+# Wide Baseline Data
+kubrics_4d_pairs:     "???"
+flyingthings_pairs:   1_000
+flyingchairs_pairs:   640
+spring_pairs:         1_000
+monkaa_pairs:         "???"
+hd1k_pairs:           "???"
+
+# subsample
+blendedmvs_subsample: 10
+megadepth_subsample:  179
+scannet_subsample:    18
+
+test_dataset_str: "
+  + ${dataset.quantity_options.val.blendedmvs_pairs} @ ${dataset.blendedmvs.val.dataset_str}[::${dataset.quantity_options.val.blendedmvs_subsample}]
+  + ${dataset.quantity_options.val.megadepth_pairs} @ ${dataset.megadepth.val.dataset_str}[::${dataset.quantity_options.val.megadepth_subsample}]
+  + ${dataset.quantity_options.val.scannet_pairs} @ ${dataset.scannetpp.val.dataset_str}[::${dataset.quantity_options.val.scannet_subsample}]
+  + ${dataset.quantity_options.val.tartanair_pairs} @ ${dataset.tartanair_assembled.val.dataset_str}[::1]
+  + ${dataset.quantity_options.val.flyingthings_pairs} @ ${dataset.flyingthings.val.dataset_str}[::1]
+  + ${dataset.quantity_options.val.flyingchairs_pairs} @ ${dataset.flyingchairs.val.dataset_str}[::1]
+  + ${dataset.quantity_options.val.habitat_pairs} @ ${dataset.habitat.val.dataset_str}[::1]
+  + ${dataset.quantity_options.val.spring_pairs} @ ${dataset.spring.val.dataset_str}[::1]"

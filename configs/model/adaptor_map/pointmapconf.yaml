@@ -1,0 +1,10 @@
+flow_with_confidence:
+  class: PointMapWithConfidenceAdaptor
+  kwargs:
+    name: pointmap_with_confidence
+    pointmap_mode: exp
+    pointmap_vmin: -.inf
+    pointmap_vmax: .inf
+    confidence_type: exp
+    confidence_vmin: 1
+    confidence_vmax: .inf

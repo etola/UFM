@@ -1,0 +1,14 @@
+dataset_str:
+  "TartanairAssembled(
+    split='${dataset.tartanair_assembled.val.split}',
+    resolution=${dataset.tartanair_assembled.val.dataset_resolution},
+    seed=${dataset.tartanair_assembled.val.seed},
+    transform='${dataset.tartanair_assembled.val.transform}',
+    data_norm_type='${dataset.tartanair_assembled.val.data_norm_type}',
+    ROOT='${dataset.tartanair_assembled.val.ROOT}')"
+split: 'val'
+dataset_resolution: ${dataset.resolution_val}
+seed: 777
+transform: 'imgnorm'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/TartanAir/assembled/tartanair_640_mega_training_0328_good

@@ -1,0 +1,5 @@
+scheduler: cosine
+scheduler_kwargs:
+  num_warpup_epochs: ${training_scheme.warmup_epochs}
+  num_epochs: ${training_scheme.num_epochs}
+  min_lr_rate: 1e-2

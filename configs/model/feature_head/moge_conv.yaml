@@ -1,0 +1,19 @@
+patch_size: ${model.encoder.patch_size}
+num_features: 4
+input_feature_dims:
+  - ${model.encoder.encoder_embed}
+  - ${model.decoder.transformer_dim}
+  - ${model.decoder.transformer_dim}
+  - ${model.decoder.transformer_dim}
+dim_out:
+  - 1
+  - 1
+dim_proj: 512
+dim_upsample: [256, 128, 64]
+dim_times_res_block_hidden: 2
+num_res_blocks: 2
+res_block_norm: "group_norm"
+last_res_blocks: 0
+last_conv_channels: 32
+last_conv_size: 1
+pretrained_checkpoint_path: null

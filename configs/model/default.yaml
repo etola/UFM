@@ -1,0 +1,38 @@
+defaults:
+  - encoder: radio_l
+  - decoder: base
+  - feature_head: dpt
+  - adaptor_map: flowconf+occ
+
+model_class: ??? # MatchAnythingModel or DUSt3R
+
+img_size: ???
+
+data_norm_type: 'radio'
+info_sharing_and_head_structure: 'dual+dual'
+num_channels: 4
+
+# for decoder
+returned_intermediate_layers: [5, 8]
+
+model_args:
+  encoder_str: ${model.encoder.encoder_str}
+  encoder_kwargs: ${model.encoder.encoder_kwargs}
+  img_size: ${model.img_size}
+  info_sharing_and_head_structure: ${model.info_sharing_and_head_structure}
+  input_embed_dim: ${model.decoder.input_embed_dim}
+  transformer_dim: ${model.decoder.transformer_dim}
+  num_heads: ${model.decoder.num_heads}
+  num_layers: ${model.decoder.num_layers}
+  mlp_ratio: ${model.decoder.mlp_ratio}
+  qkv_bias: ${model.decoder.qkv_bias}
+  qk_norm: ${model.decoder.qk_norm}
+  position_encoding: ${model.decoder.position_encoding}
+  normalize_intermediate: ${model.decoder.normalize_intermediate}
+  returned_intermediate_layers: ${model.decoder.returned_intermediate_layers}
+  info_sharing_kwargs: ${model.decoder.decoder_kwargs}
+  info_sharing_checkpoint_path: ${model.decoder.decoder_checkpoint_path}
+  head_type: dpt
+  feature_head_kwargs: ${model.feature_head}
+  adaptors_kwargs: ${model.adaptor_map}
+  pretrained_checkpoint_path: null

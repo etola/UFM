@@ -1,0 +1,15 @@
+dataset_str:
+  "FlyingChairs(
+    split='${dataset.flyingchairs.val.split}',
+    resolution=${dataset.flyingchairs.val.dataset_resolution},
+    seed=${dataset.flyingchairs.val.seed},
+    transform='${dataset.flyingchairs.val.transform}',
+    data_norm_type='${dataset.flyingchairs.val.data_norm_type}',
+    ROOT='${dataset.flyingchairs.val.ROOT}')"
+
+split: 'val'
+dataset_resolution: ${dataset.resolution_val}
+seed: 777
+transform: 'imgnorm'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/flyingchairs

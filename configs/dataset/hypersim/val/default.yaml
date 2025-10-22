@@ -1,0 +1,14 @@
+dataset_str:
+  "HyperSim(
+    split='${dataset.hypersim.val.split}',
+    resolution=${dataset.hypersim.val.dataset_resolution},
+    seed=${dataset.hypersim.val.seed},
+    transform='${dataset.hypersim.val.transform}',
+    data_norm_type='${dataset.hypersim.val.data_norm_type}',
+    ROOT='${dataset.hypersim.val.ROOT}')"
+split: 'val'
+dataset_resolution: ${dataset.resolution_val}
+seed: 777
+transform: 'imgnorm'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/hypersim_processed

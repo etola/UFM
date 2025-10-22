@@ -1,0 +1,33 @@
+# Optical Flow Data
+ariadtc_pairs:        10000
+ariadtc_subsample:    10
+
+blendedmvs_pairs:     8715
+blendedmvs_subsample: 10
+
+megadepth_pairs:      10000
+megadepth_subsample:  179
+
+tartanair_pairs:      852
+
+hypersim_pairs:       10000
+hypersim_subsample:   10
+
+scannet_pairs:        10000
+scannet_subsample:    18
+
+habitat_pairs:        10000
+habitat_subsample:    100
+
+static_things_pairs:  "???"
+
+# Wide Baseline Data
+kubrics_4d_pairs:     "???"
+
+flyingthings_pairs:   3933
+flyingchairs_pairs:   640
+spring_pairs:         1878
+monkaa_pairs:         "???"
+hd1k_pairs:           "???"
+
+test_dataset_str: ""

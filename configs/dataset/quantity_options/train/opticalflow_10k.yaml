@@ -1,0 +1,25 @@
+base_pairs: 10_000
+data_subsample_ratio: 1
+
+# Wide Baseline Data
+blendedmvs_pairs:     "???"
+megadepth_pairs:      "???"
+tartanair_pairs:      "???"
+scannet_pairs:        "???"
+habitat_pairs:        "???"
+static_things_pairs:  "???"
+kubrics_4d_pairs:     "???"
+
+# Optical Flow Data
+flyingthings_pairs:   5_000
+flyingchairs_pairs:   2_500
+spring_pairs:         2_500
+monkaa_pairs:         500
+hd1k_pairs:           500
+
+train_dataset_str: "
+  + ${dataset.quantity_options.train.flyingthings_pairs} @ ${dataset.flyingthings.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.flyingchairs_pairs} @ ${dataset.flyingchairs.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.spring_pairs} @ ${dataset.spring.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.hd1k_pairs} @ ${dataset.hd1k.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.monkaa_pairs} @ ${dataset.monkaa.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]"

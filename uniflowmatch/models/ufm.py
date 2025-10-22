@@ -928,6 +928,8 @@ class UniFlowMatchClassificationRefinement(UniFlowMatch, PyTorchModelHubMixin):
             head_output1 = self._downstream_head(1, info_sharing_outputs, shape1)
             flow_prediction = head_output1["flow"].value
 
+            result.flow = UFMFlowFieldOutput(flow_output=flow_prediction)
+
             if hasattr(self, "uncertainty_head"):
                 # run the uncertainty head
                 head_output_uncertainty = self._downstream_head(
@@ -940,9 +942,6 @@ class UniFlowMatchClassificationRefinement(UniFlowMatch, PyTorchModelHubMixin):
                     result.flow.flow_covariance = head_output_uncertainty["flow_cov"].covariance
                     result.flow.flow_covariance_inv = head_output_uncertainty["flow_cov"].inv_covariance
                     result.flow.flow_covariance_log_det = head_output_uncertainty["flow_cov"].log_det
-
-                if "keypoint_confidence" in head_output_uncertainty:
-                    result.keypoint_confidence = head_output_uncertainty["keypoint_confidence"].value.squeeze(1)
 
                 if "non_occluded_mask" in head_output_uncertainty:
                     result.covisibility = UFMMaskFieldOutput(
@@ -988,28 +987,38 @@ class UniFlowMatchClassificationRefinement(UniFlowMatch, PyTorchModelHubMixin):
 
                 classification_features0, classification_features1 = classification_features.chunk(2, dim=0)
 
-            # refine the flow prediction with features from the classification head
-            for i in range(1):
-                residual, log_softmax_attention = self.classification_refinement(
-                    flow_prediction, classification_features
-                )
-                flow_prediction = flow_prediction + residual
+        # refine the flow prediction with features from the classification head. We only do the full compute during eval.
+        # during training, we can avoid computing refinement in actually occluded regions to accelerate training.
+        if not self.training:
+            residual, log_softmax_attention = self.classification_refinement(flow_prediction, classification_features)
+
 
         # Fill in the result
         # WARNING: based on how the residual is computed, flow_prediction will have gradient cancelled by mathematics,
         # so there will be no supervision to the flow prediction at all. We need to use specialized loss function to
         # supervise the regression_flow_output.
-        result.flow = UFMFlowFieldOutput(
-            flow_output=flow_prediction,
-        )
+        if not self.training:
+            result.flow.flow_output = flow_prediction + residual
 
-        result.classification_refinement = UFMClassificationRefinementOutput(
-            regression_flow_output=flow_prediction,
-            residual=residual,
-            log_softmax=log_softmax_attention,
-            feature_map_0=classification_features0,
-            feature_map_1=classification_features1,
-        )
+            result.classification_refinement = UFMClassificationRefinementOutput(
+                regression_flow_output=flow_prediction,
+                residual=residual,
+                log_softmax=log_softmax_attention,
+                feature_map_0=classification_features0,
+                feature_map_1=classification_features1,
+            )
+        else:
+            result.flow.flow_output = flow_prediction
+
+            result.classification_refinement = UFMClassificationRefinementOutput(
+                regression_flow_output=flow_prediction,
+                residual=None,
+                log_softmax=None,
+                feature_map_0=classification_features0,
+                feature_map_1=classification_features1,
+                attention_bias=1.0 * self.classification_bias,
+                temperature=1.0 * self.temperature,
+            )
 
         return result
 

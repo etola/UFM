@@ -1,0 +1,4 @@
+scheduler: inverse_sqrt
+scheduler_kwargs:
+  num_warpup_epochs: ${training_scheme.warmup_epochs}
+  timescale_epochs: 1

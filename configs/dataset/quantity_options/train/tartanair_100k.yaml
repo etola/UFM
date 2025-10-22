@@ -1,0 +1,5 @@
+defaults:
+  - default
+
+train_dataset_str: "
+  + ${dataset.quantity_options.train.tartanair_pairs} @ ${dataset.tartanair_assembled.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]"

@@ -1,0 +1,18 @@
+dataset_str:
+  "StaticThings3D(
+    split='${dataset.staticthings.train.split}',
+    resolution=${dataset.staticthings.train.dataset_resolution},
+    mask_bg=False,
+    aug_crop='${dataset.staticthings.train.aug_crop}',
+    aug_monocular=${dataset.staticthings.train.aug_monocular},
+    transform='${dataset.staticthings.train.transform}',
+    data_norm_type='${dataset.staticthings.train.data_norm_type}',
+    ROOT='${dataset.staticthings.train.ROOT}')"
+split: 'train'
+dataset_resolution: ${dataset.resolution_train}
+# mask_bg: 'rand' # False
+aug_crop: False
+aug_monocular: 0.005
+transform: 'colorjitter'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/staticthings3d_processed

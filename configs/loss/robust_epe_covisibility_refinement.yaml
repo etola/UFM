@@ -1,0 +1,49 @@
+train_loss:
+  epe:
+    class: FlowEPELoss
+    kwargs:
+      multiplier: 0.0
+      supervision_range: occlusion
+      minimum_mask_threshold: 0.1
+
+  robust_epe:
+    class: RobustRegressionLoss
+    kwargs:
+      multiplier: 1.0
+      supervision_range: occlusion
+      minimum_mask_threshold: 0.1
+      alpha: 0.5
+      c: 0.24
+      target: regression_flow_output
+
+  refinement_cross_entropy:
+    class: RefinementCrossEntropyLoss
+    kwargs:
+      multiplier: 10.0
+      supervision_range: occlusion
+      supervision_strategy: 4_point_average
+
+test_loss:
+  epe:
+    class: FlowEPELoss
+    kwargs:
+      multiplier: 0.0
+      supervision_range: occlusion
+      minimum_mask_threshold: 0.1
+
+  robust_epe:
+    class: RobustRegressionLoss
+    kwargs:
+      multiplier: 1.0
+      supervision_range: occlusion
+      minimum_mask_threshold: 0.1
+      alpha: 0.5
+      c: 0.24
+      target: regression_flow_output
+
+  refinement_cross_entropy:
+    class: RefinementCrossEntropyLoss
+    kwargs:
+      multiplier: 10.0
+      supervision_range: occlusion
+      supervision_strategy: 4_point_average

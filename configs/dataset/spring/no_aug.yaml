@@ -1,0 +1,3 @@
+defaults:
+  - train: no_aug
+  - val: default

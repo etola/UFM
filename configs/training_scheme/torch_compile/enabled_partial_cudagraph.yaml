@@ -1,0 +1,9 @@
+enable_torch_copile: True
+
+dynamic: False
+fullgraph: False
+compile_options:
+  shape_padding: True
+  epilogue_fusion: False
+  triton.cudagraphs: True
+  max-autotune: False

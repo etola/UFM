@@ -1,0 +1,5 @@
+defaults:
+  - default
+
+test_dataset_str: "
+  + ${dataset.quantity_options.val.flyingchairs_pairs} @ ${dataset.flyingchairs.val.dataset_str}[::1]"

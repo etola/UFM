@@ -1,0 +1,24 @@
+dataset_str:
+  "FlyingThings3D(
+    split='${dataset.flyingthings.train.split}',
+    resolution=${dataset.flyingthings.train.dataset_resolution},
+    aug_crop=${dataset.flyingthings.train.aug_crop},
+    aug_monocular=${dataset.flyingthings.train.aug_monocular},
+    transform='${dataset.flyingthings.train.transform}',
+    data_norm_type='${dataset.flyingthings.train.data_norm_type}',
+    ROOT='${dataset.flyingthings.train.ROOT}',
+    aug_left_right=${dataset.flyingthings.train.aug_left_right},
+    aug_clean_final=${dataset.flyingthings.train.aug_clean_final},
+    dstype='${dataset.flyingthings.train.dstype}',
+    aug_low_light=False)"
+split: 'train'
+dataset_resolution: ${dataset.resolution_train}
+dstype: 'clean'
+# mask_bg: 'rand' # not implemented yet
+aug_crop: True # aug crop also not implemented yet
+aug_monocular: 0.0 # Not implemented Yet
+aug_left_right: True
+aug_clean_final: True
+transform: 'colorjitter'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/flyingthings3d_processed

@@ -1,0 +1,7 @@
+defaults:
+  - default
+
+root_data_dir: /jet/home/yzhang25/match_anything/data
+uniception_pth_root: /ocean/projects/cis220039p/yzhang25/uniception_checkpoints
+
+tartanair_root_data_dir: /jet/home/yzhang25/match_anything/data

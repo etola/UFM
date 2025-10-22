@@ -1,0 +1,3 @@
+defaults:
+  - train: opticalflow_100k
+  - val: all_full

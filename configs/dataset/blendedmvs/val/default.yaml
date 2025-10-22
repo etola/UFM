@@ -1,0 +1,16 @@
+dataset_str:
+  "BlendedMVS(
+    split='${dataset.blendedmvs.val.split}',
+    resolution=${dataset.blendedmvs.val.dataset_resolution},
+    seed=${dataset.blendedmvs.val.seed},
+    transform='${dataset.blendedmvs.val.transform}',
+    data_norm_type='${dataset.blendedmvs.val.data_norm_type}',
+    ROOT='${dataset.blendedmvs.val.ROOT}',
+    pair_metadata_path='${dataset.blendedmvs.val.pair_metadata_path}')"
+split: 'val'
+dataset_resolution: ${dataset.resolution_val}
+seed: 777
+transform: 'imgnorm'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/blendedmvs_processed
+pair_metadata_path: ${root_data_dir}/dust3r_data_pairs/blendedmvs_pairs.npy

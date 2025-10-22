@@ -1,0 +1,17 @@
+defaults:
+  - default
+
+train_dataset_str: "
+  + ${dataset.quantity_options.train.blendedmvs_pairs} @ ${dataset.blendedmvs.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.megadepth_pairs} @ ${dataset.megadepth.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.scannet_pairs} @ ${dataset.scannetpp.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.hypersim_pairs} @ ${dataset.hypersim.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.tartanair_pairs} @ ${dataset.tartanair_assembled.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.kubrics_4d_pairs} @ ${dataset.kubric4d.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.static_things_pairs} @ ${dataset.staticthings.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.flyingthings_pairs} @ ${dataset.flyingthings.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.habitat_pairs} @ ${dataset.habitat.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.flyingchairs_pairs} @ ${dataset.flyingchairs.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.spring_pairs} @ ${dataset.spring.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.hd1k_pairs} @ ${dataset.hd1k.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]
+  + ${dataset.quantity_options.train.monkaa_pairs} @ ${dataset.monkaa.train.dataset_str}[::${dataset.quantity_options.train.data_subsample_ratio}]"

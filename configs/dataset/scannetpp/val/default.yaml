@@ -1,0 +1,14 @@
+dataset_str:
+  "ScanNetpp(
+    split='${dataset.scannetpp.val.split}',
+    resolution=${dataset.scannetpp.val.dataset_resolution},
+    seed=${dataset.scannetpp.val.seed},
+    transform='${dataset.scannetpp.val.transform}',
+    data_norm_type='${dataset.scannetpp.val.data_norm_type}',
+    ROOT='${dataset.scannetpp.val.ROOT}')"
+split: 'test'
+dataset_resolution: ${dataset.resolution_val}
+seed: 777
+transform: 'imgnorm'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/scannetpp_processed

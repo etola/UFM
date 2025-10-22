@@ -1,0 +1,7 @@
+defaults:
+  - default
+
+root_data_dir: /path/to/your/data
+uniception_pth_root: /path/to/your/uniception_checkpoints
+
+tartanair_root_data_dir: /path/to/your/tav2_data

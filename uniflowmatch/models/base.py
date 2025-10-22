@@ -56,6 +56,8 @@ class UFMClassificationRefinementOutput:
     feature_map_0: torch.Tensor
     feature_map_1: torch.Tensor
 
+    temperature: Optional[torch.Tensor] = None
+    attention_bias: Optional[torch.Tensor] = None
 
 @dataclass
 class UFMOutputInterface:
