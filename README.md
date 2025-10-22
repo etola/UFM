@@ -23,6 +23,11 @@ If you reach here, you are interested in verifying the claims made in the UFM pa
 
 This branch contains the exact configurations, pretrained checkpoints, and evaluation scripts used in our experiments. It is intended to enable others to reproduce benchmark results, analyze ablations, and compare against UFM under standardized settings.
 
+## Updates
+- [2025/10/20] Benchmark & data script for primary results.
+- [2025/10/08] Released 980 resolution models.
+- [2025/06/10] Initial release of model checkpoint and inference code.
+
 ## What's Included
 
 - **Pre-trained UFM models** in 560×420 and 980×644 resolutions (base and refine variants)
@@ -96,13 +101,7 @@ The results will be printed to the screen and also recorded as a text file in `[
 
 ### Reproducibility Notes
 - `ufm_980_refine` is a updated checkpoint that is slightly different from what's reported in the paper. It have slightly better performance on optical flow.
-`
 
-
-## Updates
-- [2025/10/20] Benchmark & data script for primary results.
-- [2025/10/08] Released 980 resolution models.
-- [2025/06/10] Initial release of model checkpoint and inference code.
 
 ## License
 
