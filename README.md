@@ -38,7 +38,7 @@ This branch contains the data downloading and processing instructions, example a
 ## Getting Started
 ### Setup Environment
 
-You will need to `pip install` again if you switched to here from the other branches.
+You will need to `pip install -e .` again if you switched to here from the other branches.
 
 
 ### Setup Data
