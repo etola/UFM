@@ -81,7 +81,7 @@ All `UFM` checkpoints will be automatically downloaded from HuggingFace.
 ### 4. Run evaluation
 Run evaluation by 
 ```bash
-python scripts/benchmark.py \ 
+python benchmarks/ufm_benchmarks/run_benchmark.py \ 
     --solution_name [soln_name] \
     --benchmark_name [bench_name] \
     --dataset_root [data_root] \
@@ -100,7 +100,6 @@ The results will be printed to the screen and also recorded as a text file in `[
 - The branch is frozen for reproducibility - please open issues instead of direct commits for changes or extensions.
 - If you wish to integrate UFM into your own pipeline, please refer to the main branch.
 - For any discrepancies between your reproduced results and the paper, please open a issue.
-- As explained in the paper, all `980` resolution checkpoints finetune only on high resolution data, which happens to be all from Optical Flow, as their last step. Thus they have degraded performance for wide-baseline.
   
 
 ### Reproducibility Notes
