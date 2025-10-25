@@ -23,9 +23,8 @@ If you reach here, you are interested in building upon UFM, thank you for your e
 
 This branch contains the data downloading and processing instructions, example and full training scripts used to create UFM.
 
-## ⚠️ Branch Under Construction
-This repository is currently under cleaning.
-Some components — such as requirements.txt, documentation, and references — are incomplete or subject to change.
+## ⚠️ Data Processing Under Construction
+We are still working on some data processing (like TA-WB). They are incomplete or subject to change.
 
 ## Updates
 - [2025/10/21] Complete training and most data processing scripts.
