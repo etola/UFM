@@ -24,7 +24,7 @@ If you reach here, you are interested in building upon UFM, thank you for your e
 This branch contains the data downloading and processing instructions, example and full training scripts used to create UFM.
 
 ## ⚠️ Data Processing Under Construction
-We are still working on some data processing (like TA-WB). They are incomplete or subject to change.
+We are still working on some data processing (like TA-WB). The metadata download link is not working currently, we are actively working to resolve this with HF.
 
 ## Updates
 - [2025/10/21] Complete training and most data processing scripts.
