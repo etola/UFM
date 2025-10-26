@@ -64,6 +64,8 @@ It will download raw data to `[data_root]/raw_data/FlyingThings`. (Download sour
 
 Then run the `preprocess_datasets/preprocess_flyingthings.py`
 
+We provide the processed version on [UFM Data Mirror](https://huggingface.co/datasets/infinity1096/flyingthings3d_processed).
+
 ## FlyingChairs
 
 ```bash
