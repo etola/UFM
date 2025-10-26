@@ -15,7 +15,7 @@ Alternatively, download the zipped processed version from [UFM Data Mirror](http
 Follow DUSt3R's preprocessing script at [here](https://github.com/naver/dust3r/tree/main/datasets_preprocess).
 
 ## TA_WB Training Set (we are still uploading, please skip for now)
-We are still uploading this dataset (2.0 TB) at https://huggingface.co/datasets/theairlabcmu/TA-WB. Please stay tuned.
+We are still uploading this dataset (2.0 TB) at https://huggingface.co/datasets/infinity1096/TA-WB. Please stay tuned.
 
 ## Scannet++ V2
 
