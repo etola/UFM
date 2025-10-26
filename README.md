@@ -45,9 +45,8 @@ You will need to `pip install -e .` again if you switched to here from the other
 
 
 ### Setup Data
-Please refer to `preprocess_datasets/README.md` for a complete guide. 
 
-<!-- We provide preprocessed blendedmvs dataset for running the example training scripts. -->
+Please refer to `preprocess_datasets/README.md` for a complete guide. We provided preprocessed blendedmvs dataset for running the example training scripts.
 
 ### Setup Configuration
 
