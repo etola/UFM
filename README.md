@@ -23,10 +23,12 @@ If you reach here, you are interested in building upon UFM, thank you for your e
 
 This branch contains the data downloading and processing instructions, example and full training scripts used to create UFM.
 
-## ⚠️ Data Processing Under Construction
-We are still working on some data processing (like TA-WB). The metadata download link is not working currently, we are actively working to resolve this with HF.
+## ✅ Data Processing Is Ready
+
+We have completed cleaning the data processing, all data should be ready. Please let us know if something does not work.
 
 ## Updates
+- [2025/10/26] Complete data source and processing scripts.
 - [2025/10/21] Complete training and most data processing scripts.
 - [2025/10/20] Benchmark & data script for primary results.
 - [2025/10/08] Released 980 resolution models.
