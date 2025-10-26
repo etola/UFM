@@ -88,7 +88,7 @@ It will download raw data to [data_root]/raw_data/Monkaa. (Download source: http
 Then run `preprocess_datasets/preprocess_monkaa.py`
 
 ## HD1K
-The original data is hosted at [here](https://hci.iwr.uni-heidelberg.de/benchmarks). However, since the site is unreachable, we host a copy of [the original data](https://huggingface.co/datasets/theairlabcmu/HD1K_backup). 
+The original data is hosted at [here](https://hci.iwr.uni-heidelberg.de/benchmarks). However, since the site is unreachable, we host a copy of [the original data](infinity1096/HD1K-Backup). 
 
 process the data with `preprocess_datasets/preprocess_hd1k.py`.
 
