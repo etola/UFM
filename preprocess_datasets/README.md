@@ -14,8 +14,14 @@ Alternatively, download the zipped processed version from [UFM Data Mirror](http
 ## MegaDepth
 Follow DUSt3R's preprocessing script at [here](https://github.com/naver/dust3r/tree/main/datasets_preprocess).
 
-## TA_WB Training Set (we are still uploading, please skip for now)
-We are still uploading this dataset (2.0 TB) at https://huggingface.co/datasets/infinity1096/TA-WB. Please stay tuned.
+## TA_WB Training Set
+Download TA-WB from [here](https://huggingface.co/datasets/infinity1096/TA-WB) and place it as
+
+```
+data_root/TartanAir/assembled/tartanair_640_mega_training_0203_pinhole_good/
+    train/
+    val/
+```
 
 ## Scannet++ V2
 
