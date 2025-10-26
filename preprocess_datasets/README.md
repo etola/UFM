@@ -1,20 +1,26 @@
 # Data Prepration
 
-This script handles how to download and prepare all data required for UFM training.
+This script handles how to download and prepare all data required for UFM training. We created a [UFM Data Mirror](https://huggingface.co/collections/infinity1096/ufm-data-mirror) at HuggingFace that hosts some of the preprocessed version.
 
-## Metadata (Required for BlendedMVS, Scannet++)
-Download the pairs metadata from theairlabcmu/UFM-Training-Metadata to be used with the preprocessing scripts.
+## Metadata (from DUSt3R)
+
+Download all the pairing information from [DUSt3R](https://github.com/naver/dust3r/tree/main) and place them under `data_root/dust3r_data_pairs`. 
 
 ## BlendedMVS
-Download BlendedMVS from [here](https://github.com/YoYo000/BlendedMVS) and follow `/jet/home/yzhang25/UFM/preprocess_datasets/preprocess_blendedmvs.py`.
+Download BlendedMVS from [here](https://github.com/YoYo000/BlendedMVS) and follow DUSt3R's preprocessing [here](https://github.com/naver/dust3r/blob/main/datasets_preprocess/preprocess_blendedMVS.py).
+
+Alternatively, download the zipped processed version from [UFM Data Mirror](https://huggingface.co/datasets/infinity1096/blendedmvs_processed).
 
 ## MegaDepth
 Follow DUSt3R's preprocessing script at [here](https://github.com/naver/dust3r/tree/main/datasets_preprocess).
 
-## TA_WB Training Set
+## TA_WB Training Set (we are still uploading, please skip for now)
 We are still uploading this dataset (2.0 TB) at https://huggingface.co/datasets/theairlabcmu/TA-WB. Please stay tuned.
 
 ## Scannet++ V2
+
+Download the pairs metadata from [here](https://huggingface.co/datasets/infinity1096/ufm_metadata) to be used with the preprocessing scripts.
+
 Download Scannet++ V2 from [here](https://scannetpp.mlsg.cit.tum.de/scannetpp/) and follow `preprocess_datasets/preprocess_scannetpp.py`.
 
 ## Habitat CAD
@@ -31,7 +37,7 @@ Follow DUSt3R's preprocessing script at [here](https://github.com/naver/dust3r/b
 
 ## Kubrics 4D
 
-Download the training set from https://gcd.cs.columbia.edu/gcd_kubric4d_train_dl.sh and the metadata files, place the files as:
+Download the training set from [here](https://gcd.cs.columbia.edu/gcd_kubric4d_train_dl.sh) [dataset project page](https://gcd.cs.columbia.edu) and the precomputed metadata files from [here](https://huggingface.co/datasets/infinity1096/kubric4d_metadata/tree/main), place the files as:
 
 ```
 kubric4d/
