@@ -61,7 +61,7 @@ The `machines` configuration allows the same code to run on multiple places seam
 Modify the logic for setting the `machine` environment variable in the file, and run: 
 
 ```bash
-python bash_scripts/examples/blendedmvs.sh
+bash bash_scripts/examples/blendedmvs.sh
 ```
 
 ## Functional Components
