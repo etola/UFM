@@ -1,19 +1,21 @@
 #!/bin/bash
 
-# Change this to fit your PC and cluster setup
-if [ -e "/ocean/projects" ]; then
-    if [ -e "/local/datasets" ]; then
-        machine=psc_local
-    else
-        machine=psc
-    fi
-else
-    if [ -e "/data2" ]; then
-        machine=cluster
-    else
-        machine=yuchen
-    fi
-fi
+# # Change this to fit your PC and cluster setup
+# if [ -e "/ocean/projects" ]; then
+#     if [ -e "/local/datasets" ]; then
+#         machine=psc_local
+#     else
+#         machine=psc
+#     fi
+# else
+#     if [ -e "/data2" ]; then
+#         machine=cluster
+#     else
+#         machine=yuchen
+#     fi
+# fi
+
+machine=esper
 
 echo "Machine: ${machine}"
 

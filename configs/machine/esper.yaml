@@ -1,0 +1,7 @@
+defaults:
+  - default
+
+root_data_dir: /home/tola/data/ufm_training/
+uniception_pth_root: /home/tola/code/reference/UFM/UniCeption/checkpoints
+
+tartanair_root_data_dir: /home/tola/data/ufm_training/
