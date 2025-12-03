@@ -19,6 +19,7 @@ from uniflowmatch.datasets.scannetpp import ScanNetpp
 from uniflowmatch.datasets.spring import Spring
 from uniflowmatch.datasets.staticthings3d import StaticThings3D
 from uniflowmatch.datasets.tartanair_assembled import TartanairAssembled
+from uniflowmatch.datasets.my_data import MY_DATA
 
 # datasets for evaluation
 from uniflowmatch.datasets.dtu import DTU
@@ -26,6 +27,7 @@ from uniflowmatch.datasets.eth3d import ETH3D
 
 __all__ = [
     "BlendedMVS",
+    "MY_DATA",
     "MegaDepth",
     "ScanNetpp",
     "Habitat",

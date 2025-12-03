@@ -1,0 +1,16 @@
+dataset_str:
+  "MY_DATA(
+    split='${dataset.my_data.val.split}',
+    resolution=${dataset.my_data.val.dataset_resolution},
+    seed=${dataset.my_data.val.seed},
+    transform='${dataset.my_data.val.transform}',
+    data_norm_type='${dataset.my_data.val.data_norm_type}',
+    ROOT='${dataset.my_data.val.ROOT}',
+    pair_metadata_path='${dataset.my_data.val.pair_metadata_path}')"
+split: 'val'
+dataset_resolution: ${dataset.resolution_val}
+seed: 777
+transform: 'imgnorm'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/my_data
+pair_metadata_path: ${root_data_dir}/data_pairs/my_data.npy

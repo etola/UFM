@@ -1,0 +1,3 @@
+defaults:
+  - train: my_data
+  - val: my_data

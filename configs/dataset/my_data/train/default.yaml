@@ -1,0 +1,18 @@
+dataset_str:
+  "MY_DATA(
+    split='${dataset.my_data.train.split}',
+    resolution=${dataset.my_data.train.dataset_resolution},
+    aug_crop='${dataset.my_data.train.aug_crop}',
+    aug_monocular=${dataset.my_data.train.aug_monocular},
+    transform='${dataset.my_data.train.transform}',
+    data_norm_type='${dataset.my_data.train.data_norm_type}',
+    ROOT='${dataset.my_data.train.ROOT}',
+    pair_metadata_path='${dataset.my_data.train.pair_metadata_path}')"
+split: 'train'
+dataset_resolution: ${dataset.resolution_train}
+aug_crop: False
+aug_monocular: 0
+transform: 'imgnorm'
+data_norm_type: ${model.data_norm_type}
+ROOT: ${root_data_dir}/my_data
+pair_metadata_path: ${root_data_dir}/data_pairs/my_data.npy

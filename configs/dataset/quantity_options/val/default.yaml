@@ -30,4 +30,7 @@ spring_pairs:         1878
 monkaa_pairs:         "???"
 hd1k_pairs:           "???"
 
+my_data_pairs:       2000
+my_data_subsample:    57
+
 test_dataset_str: ""

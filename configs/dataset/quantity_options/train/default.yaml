@@ -2,10 +2,11 @@ base_pairs: 100_000
 data_subsample_ratio: 1
 
 # Wide Baseline Data
-ariadtc_pairs:        50_000
+my_data_pairs:         10_000
+tariadtc_pairs:        50_000
 blendedmvs_pairs:     100_000
 megadepth_pairs:      100_000
-tartanair_pairs:      75_000
+tartanair_pairs:       75_000
 scannet_pairs:        100_000
 hypersim_pairs:       50_000
 habitat_pairs:        12_500

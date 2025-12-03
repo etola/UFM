@@ -1,0 +1,5 @@
+defaults:
+  - default
+
+train_dataset_str: "
+  + 1_000 @ ${dataset.my_data.train.dataset_str}"

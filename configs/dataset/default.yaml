@@ -1,20 +1,24 @@
 defaults:
-  - blendedmvs: default
-  - megadepth: default
-  - scannetpp: anymap_cropping
-  - habitat: default
-  - hypersim: default
-  - flyingchairs: default
-  - flyingthings: default
-  - monkaa: default
+  - my_data: default
   - resolution_options: default
-  - tartanair_assembled: tartanair_640_mega_training_0328_good
-  - staticthings: default
-  - hd1k: default
-  - spring: default
-  - kubric4d: default
-  - quantity_options: ufm_100k
+  - quantity_options: my_data
 
+# defaults:
+#   - blendedmvs: default
+#   - megadepth: default
+#   - scannetpp: anymap_cropping
+#   - habitat: default
+#   - hypersim: default
+#   - flyingchairs: default
+#   - flyingthings: default
+#   - monkaa: default
+#   - resolution_options: default
+#   - tartanair_assembled: tartanair_640_mega_training_0328_good
+#   - staticthings: default
+#   - hd1k: default
+#   - spring: default
+#   - kubric4d: default
+#   - quantity_options: ufm_100k
 
 # Training Set, For example: BlendedMVS(split='train', resolution=(512, 384), transform=...)
 train_dataset: ${dataset.quantity_options.train.train_dataset_str}

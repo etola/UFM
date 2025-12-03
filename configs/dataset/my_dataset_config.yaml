@@ -1,0 +1,7 @@
+defaults:
+  - default
+  - override quantity_options/train: my_data_settings
+  - override quantity_options/val: my_data
+
+resolution_train: ${dataset.resolution_options.560_many_non_square_ar}
+resolution_val: ${dataset.resolution_options.560_1_33_ar}

@@ -3,7 +3,7 @@ defaults:
   - loss: ???
   - model: uniflowmatch_covisibility
   - training_scheme: default
-  - machine: yuchen
+  - machine: esper
   - visualizer: flow_covisible
 
 root_data_dir: ${machine.root_data_dir}
