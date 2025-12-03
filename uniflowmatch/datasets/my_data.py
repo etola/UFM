@@ -48,7 +48,10 @@ class MY_DATA(BaseStereoViewDataset):
             raise ValueError(f"Unknown split {split}, must be None, train, val or overfit")
         # Get valid sequences
         valid_seqs = self.my_data_info.sequences
-        valid_seqls = [int(seq[8:], 16) for seq in valid_seqs]  # valid_seqhs = [int(seq[:8], 16) for seq in valid_seqs]
+        # IMPORTANT: Convert to numpy array with uint64 dtype to avoid precision loss in np.isin()
+        # Using a Python list causes np.isin to convert to float64, losing precision for large integers
+        valid_seqls = np.array([int(seq[8:], 16) for seq in valid_seqs], dtype=np.uint64)
+
         # Filter out invalid sequences
         filtered_selection = np.isin(pairs["seq_low"], valid_seqls) & selection
         self.pairs = pairs[filtered_selection]
