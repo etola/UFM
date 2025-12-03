@@ -27,14 +27,14 @@ python scripts/train.py \
     dataset/quantity_options/val=my_data \
     loss=robust_epe_covisibility \
     machine=${machine} \
-    training_scheme.effective_batch_size=6 \
+    training_scheme.effective_batch_size=1 \
     training_scheme.num_epochs=48 \
     training_scheme.warmup_epochs=4.8 \
     training_scheme.learning_rate.encoder=5e-6 \
     training_scheme.learning_rate.info_sharing=1e-4 \
     training_scheme.learning_rate.output_head=1e-4 \
     training_scheme.learning_rate.uncertainty_head=1e-4 \
-    dataset.num_workers=12 \
+    dataset.num_workers=1 \
     find_unused_parameters=True \
     visualizer=flow_covisible \
     training_scheme.validate_every_epochs=1 \
